@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E14FFEC-CC46-4D19-83A2-2DA37637ADAA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Keyczar.Portable</RootNamespace>
+    <AssemblyName>Keyczar.Portable</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <TargetPlatform Include="Windows, Version=8.1" />
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttachedSigner.cs" />
+    <Compile Include="AttachedVerifier.cs" />
+    <Compile Include="Compat\Export.cs" />
+    <Compile Include="Compat\ImportedKeySet.cs" />
+    <Compile Include="Compat\VanillaSigner.cs" />
+    <Compile Include="Compat\VanillaVerifier.cs" />
+    <Compile Include="Crypter.cs" />
+    <Compile Include="Crypto\AesKey.cs" />
+    <Compile Include="Crypto\DsaPrivateKey.cs" />
+    <Compile Include="Crypto\DsaPublicKey.cs" />
+    <Compile Include="Crypto\HmacSha1Key.cs" />
+    <Compile Include="Crypto\IKey.cs" />
+    <Compile Include="Crypto\IRsaPrivateKey.cs" />
+    <Compile Include="Crypto\IRsaPublicKey.cs" />
+    <Compile Include="Crypto\RsaPrivateKey.cs" />
+    <Compile Include="Crypto\RsaPrivateSignKeyBase.cs" />
+    <Compile Include="Crypto\RsaPublicKey.cs" />
+    <Compile Include="Crypto\RsaPublicSignKeyBase.cs" />
+    <Compile Include="Crypto\Streams\AsymmetricStream.cs" />
+    <Compile Include="Crypto\Streams\DigestStream.cs" />
+    <Compile Include="Crypto\Streams\DummyStream.cs" />
+    <Compile Include="Crypto\Streams\FinishingStream.cs" />
+    <Compile Include="Crypto\Streams\HashingStream.cs" />
+    <Compile Include="Crypto\Streams\HmacStream.cs" />
+    <Compile Include="Crypto\Streams\ICipherTextOnly.cs" />
+    <Compile Include="Crypto\Streams\SymmetricStream.cs" />
+    <Compile Include="Crypto\Streams\VerifyingStream.cs" />
+    <Compile Include="Encrypter.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="Exceptions\MissingPrimaryKeyException.cs" />
+    <Compile Include="Exceptions\ReadOnlyException.cs" />
+    <Compile Include="Extensions\EncodingExtensions.cs" />
+    <Compile Include="Extensions\StorageFolderExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Keyczar.cs" />
+    <Compile Include="KeySet\EncryptedKeySet.cs" />
+    <Compile Include="KeySet\IKeySet.cs" />
+    <Compile Include="KeySet\Key.cs" />
+    <Compile Include="KeySet\KeySet.cs" />
+    <Compile Include="KeySet\Manage\EncryptedKeySetWriter.cs" />
+    <Compile Include="KeySet\Manage\IKeySetWriter.cs" />
+    <Compile Include="KeySet\Manage\KeySetWriter.cs" />
+    <Compile Include="KeySet\Manage\MutableKeySet.cs" />
+    <Compile Include="KeySet\Manage\PbeKeySetWriter.cs" />
+    <Compile Include="KeySet\Metadata\KeyMetadata.cs" />
+    <Compile Include="KeySet\Metadata\KeyPurpose.cs" />
+    <Compile Include="KeySet\Metadata\KeyStatus.cs" />
+    <Compile Include="KeySet\Metadata\KeyType.cs" />
+    <Compile Include="KeySet\Metadata\KeyVersion.cs" />
+    <Compile Include="KeySet\PbeKeySet.cs" />
+    <Compile Include="KeySet\Pbe\PbeHashType.cs" />
+    <Compile Include="KeySet\Pbe\PbeKeyStore.cs" />
+    <Compile Include="KeySet\Pbe\PbeKeyType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionCrypter.cs" />
+    <Compile Include="Signer.cs" />
+    <Compile Include="TimeoutSigner.cs" />
+    <Compile Include="TimeoutVerifier.cs" />
+    <Compile Include="Unofficial\AesAeadKey.cs" />
+    <Compile Include="Unofficial\BlobKeySet.cs" />
+    <Compile Include="Unofficial\BlobKeySetWriter.cs" />
+    <Compile Include="Unofficial\BsonSessionKeyPacker.cs" />
+    <Compile Include="Unofficial\RsaPrivateSignKey.cs" />
+    <Compile Include="Unofficial\RsaPublicSignKey.cs" />
+    <Compile Include="Unofficial\SymmetricAeadStream.cs" />
+    <Compile Include="Unofficial\UnofficialKeyType.cs" />
+    <Compile Include="Util\CachedPrompt.cs" />
+    <Compile Include="Util\Nondestructive\NondestructiveBinaryReader.cs" />
+    <Compile Include="Util\Nondestructive\NondestructiveBinaryWriter.cs" />
+    <Compile Include="Util\Nondestructive\NondestructivePositionLengthLimitingStream.cs" />
+    <Compile Include="Util\Nondestructive\NondestructiveStreamReader.cs" />
+    <Compile Include="Util\Nondestructive\NondestructiveStreamReset.cs" />
+    <Compile Include="Util\Nondestructive\NondestructiveZipFile.cs" />
+    <Compile Include="Util\ReadOnlyArray.cs" />
+    <Compile Include="Util\Secure.cs" />
+    <Compile Include="Util\StringEnum.cs" />
+    <Compile Include="Util\Utility.cs" />
+    <Compile Include="Util\WebBase64Converter.cs" />
+    <Compile Include="Util\WriteDecompressGzipStream.cs" />
+    <Compile Include="Verifier.cs" />
+    <Compile Include="WebBase64.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="crypto, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.7.0.2\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10\crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ionic.Zip.xml" />
+    <None Include="Unofficial\Readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
