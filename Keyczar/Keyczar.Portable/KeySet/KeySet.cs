@@ -52,7 +52,8 @@ namespace Keyczar
         private async Task<byte[]> GetKeyDataAsync(int version)
         {
             var path = Path.Combine(_location, version.ToString(CultureInfo.InvariantCulture));
-            using (var stream = await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(path).ConfigureAwait(false))
+            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri(path));
+            using (var stream = await file.OpenStreamForReadAsync().ConfigureAwait(false))
             {
                 byte[] buffer = new byte[stream.Length];
                 await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
@@ -71,7 +72,8 @@ namespace Keyczar
         private async Task<KeyMetadata> GetMetadataAsync()
         {
             var path = Path.Combine(_location, "meta");
-            using (var stream = await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(path).ConfigureAwait(false))
+            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri(path));
+            using (var stream = await file.OpenStreamForReadAsync().ConfigureAwait(false))
             using (var reader = new StreamReader(stream, Keyczar.RawStringEncoding))
             {
                 byte[] buffer = new byte[stream.Length];
