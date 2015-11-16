@@ -97,8 +97,6 @@
     <Compile Include="TimeoutSigner.cs" />
     <Compile Include="TimeoutVerifier.cs" />
     <Compile Include="Unofficial\AesAeadKey.cs" />
-    <Compile Include="Unofficial\BlobKeySet.cs" />
-    <Compile Include="Unofficial\BlobKeySetWriter.cs" />
     <Compile Include="Unofficial\BsonSessionKeyPacker.cs" />
     <Compile Include="Unofficial\RsaPrivateSignKey.cs" />
     <Compile Include="Unofficial\RsaPublicSignKey.cs" />
@@ -110,23 +108,17 @@
     <Compile Include="Util\Nondestructive\NondestructivePositionLengthLimitingStream.cs" />
     <Compile Include="Util\Nondestructive\NondestructiveStreamReader.cs" />
     <Compile Include="Util\Nondestructive\NondestructiveStreamReset.cs" />
-    <Compile Include="Util\Nondestructive\NondestructiveZipFile.cs" />
     <Compile Include="Util\ReadOnlyArray.cs" />
     <Compile Include="Util\Secure.cs" />
     <Compile Include="Util\StringEnum.cs" />
     <Compile Include="Util\Utility.cs" />
     <Compile Include="Util\WebBase64Converter.cs" />
-    <Compile Include="Util\WriteDecompressGzipStream.cs" />
     <Compile Include="Verifier.cs" />
     <Compile Include="WebBase64.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="crypto, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.7.0.2\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10\crypto.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -138,7 +130,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ionic.Zip.xml" />
     <None Include="Unofficial\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

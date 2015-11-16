@@ -22,7 +22,6 @@ using System.Text;
 using Keyczar.Crypto;
 using Keyczar.Crypto.Streams;
 using Keyczar.Util;
-using Ionic.Zlib;
 namespace Keyczar
 {
 
@@ -34,14 +33,6 @@ namespace Keyczar
         /// None
         /// </summary>
         None =0,
-        /// <summary>
-        /// Gzip compression
-        /// </summary>
-        Gzip =1,
-        /// <summary>
-        /// Zlib compression
-        /// </summary>
-        Zlib =2,
     }
 
     /// <summary>
@@ -135,11 +126,6 @@ namespace Keyczar
                
 
                 Stream wrapper = encryptingStream;
-                if(Compression == CompressionType.Gzip){
-                    wrapper = new GZipStream(encryptingStream,CompressionMode.Compress,true);
-                }else if(Compression == CompressionType.Zlib){
-                    wrapper = new ZlibStream(encryptingStream,CompressionMode.Compress,true);
-                }
 
                 using (encryptingStream)
                 {
