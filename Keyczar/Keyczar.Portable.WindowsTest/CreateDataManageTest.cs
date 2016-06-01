@@ -497,55 +497,6 @@ namespace KeyczarTest
             }
         }
 
-        [Test]
-        [Category("Create")]
-        [Category("Unofficial")]
-        public async Task TestCreateBlob()
-        {
-            var keyMetaData = new KeyMetadata
-                                  {
-                                      Name = "Blob",
-                                      Purpose = KeyPurpose.DecryptAndEncrypt,
-                                      KeyType = KeyType.Aes
-                                  };
-            using (var keySet = new MutableKeySet(keyMetaData))
-            {
-                keySet.AddKey(KeyStatus.Primary, 256);
-
-                using (var stream = await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(Util.TestDataPath(WRITE_DATA, "cryptkey.zip", "unofficial"), CreationCollisionOption.OpenIfExists))
-                using (var writer = new BlobKeySetWriter(stream))
-                {
-                    keySet.Save(writer);
-                }
-
-                using (var crypt = new Crypter(keySet))
-                {
-                    await Util.WriteAllText(Util.TestDataPath(WRITE_DATA, "crypt.out", "unofficial"), crypt.Encrypt(input));
-                    var keyMetaData2 = new KeyMetadata
-                                           {
-                                               Name = "Blob",
-                                               Purpose = KeyPurpose.SignAndVerify,
-                                               KeyType = KeyType.RsaPriv
-                                           };
-                    using (var keySet2 = new MutableKeySet(keyMetaData2))
-                    {
-                        keySet2.AddKey(KeyStatus.Primary);
-                        using (var stream2 = await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(Util.TestDataPath(WRITE_DATA, "signkey.zip", "unofficial"),CreationCollisionOption.OpenIfExists))
-                        using (var writer2 = new BlobKeySetWriter(stream2))
-                        {
-                            await keySet2.Save(new EncryptedKeySetWriter(writer2, crypt));
-                        }
-
-                        using (var signer = new Signer(keySet2))
-                        {
-                            await Util.WriteAllText(Util.TestDataPath(WRITE_DATA, "sign.out", "unofficial"),
-                                              signer.Sign(input));
-                        }
-                    }
-                }
-            }
-        }
-
 
         private async Task HelperCryptCreate(IKeySetWriter writer, IKeySet keySet, string kspath,
                                        IKeySet nonEncryptedKS = null, IKeySetWriter nonEncryptedWriter = null)

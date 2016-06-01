@@ -39,7 +39,7 @@ namespace KeyczarTest
         [Test]
         public void TestEncryptDecryptStream(
             [Values("aes", "rsa", "aes_aead")] String subDir,
-            [Values(CompressionType.None, CompressionType.Gzip, CompressionType.Zlib)] CompressionType type)
+            [Values(CompressionType.None)] CompressionType type)
         {
             string nestedDir = "";
             if (subDir == "aes_aead")

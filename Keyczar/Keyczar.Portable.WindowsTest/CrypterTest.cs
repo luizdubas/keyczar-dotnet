@@ -96,31 +96,6 @@ namespace KeyczarTest
             Expect(() => new Encrypter(subPath), Throws.InstanceOf<InvalidKeySetException>());
         }
 
-        [TestCase(CompressionType.Gzip)]
-        [TestCase(CompressionType.Zlib)]
-        public void TestEncryptDecryptCompression(CompressionType compression)
-        {
-            var subPath = Util.TestDataPath(TEST_DATA, "aes");
-
-            using (var crypter = new Crypter(subPath) {Compression = compression})
-            {
-                var cipher = crypter.Encrypt(input);
-                var decrypt = crypter.Decrypt(cipher);
-                Expect(decrypt, Is.EqualTo(input));
-                using (var crypter2 = new Crypter(subPath))
-                {
-                    var decrypt2 = crypter2.Decrypt(cipher);
-                    Expect(decrypt2, Is.Not.EqualTo(input));
-                }
-
-                var ciphertiny = crypter.Encrypt(bigInput);
-                //large array of zeros will compress down a lot
-                Expect(ciphertiny.Length, Is.LessThan(bigInput.Length));
-                var big = crypter.Decrypt(ciphertiny);
-                Expect(big, Is.EqualTo(bigInput));
-            }
-        }
-
 
         [TestCase("aes", "")]
         [TestCase("rsa", "")]
